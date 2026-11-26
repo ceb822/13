@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct Book {
     int number;
-    char title[10];
+    char title[20];
 
 };
 
@@ -21,6 +22,9 @@ int main(void){
 
     (p+1)->number=2;
     strcpy((p+1)->title,"electronics");
+
+    printf("%i: %s\n",p->number,p->title);
+    printf("%i: %s\n",(p+1)->number,(p+1)->title);
 
     free(p);
     return 0;

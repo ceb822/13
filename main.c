@@ -1,23 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct Book {
+    int number;
+    char title[10];
+
+};
+
 int main(void){
-    char*pc= NULL;
-    int i = 0;
+    struct Book*p;
 
-    pc=(char*)malloc(100*sizeof(char));
-    if(pc==NULL){
-        printf("memory allocation error!\n");
-        exit(1);    }
+    p=malloc(2*sizeof(struct Book));
 
+    if (p==NULL){
+        printf("Memory allocation failed\n");
+        return-1;
+    }
+    p->number=1;
+    strcpy(p->title,"C Programming");
 
-        for (i=0;i<26;i++){
-    pc[i]='a'+i;
+    (p+1)->number=2;
+    strcpy((p+1)->title,"electronics");
+
+    free(p);
+    return 0;
 }
-pc[i]=0;
-printf("%s\n",pc);
-free(pc);
-
-}
-
 

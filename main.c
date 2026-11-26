@@ -9,24 +9,24 @@ struct Book {
 };
 
 int main(void){
-    struct Book*p;
+    int i;
+    struct Book**bookshelf;
 
-    p=malloc(2*sizeof(struct Book));
+    bookshelf = (struct Book**)malloc(3 * sizeof(struct Book*));
+    for(i=0;i<3;i++)
+     bookshelf[i] = (struct Book*)malloc(10*sizeof(struct Book));
 
-    if (p==NULL){
-        printf("Memory allocation failed\n");
-        return-1;
-    }
-    p->number=1;
-    strcpy(p->title,"C Programming");
-
-    (p+1)->number=2;
-    strcpy((p+1)->title,"electronics");
-
-    printf("%i: %s\n",p->number,p->title);
-    printf("%i: %s\n",(p+1)->number,(p+1)->title);
-
-    free(p);
+    bookshelf[1][3].number =5;
+    strcpy(bookshelf[1][3].title, "c++ programing");
+    (bookshelf[2]+4)->number = 3;
+    strcpy((bookshelf[2]+4)->title, "c++ programing");
+  
+  
+    //release
+    for(i=0;i<3;i++)      
+     free(bookshelf[i]);  
+    free(bookshelf);
+  
     return 0;
 }
 
